@@ -1,9 +1,10 @@
 'use strict';
 (() => {
- const key='strengthlab-fernando-troncoso-v1';
- const blank=()=>({version:1,athlete:'fernando-troncoso',sessions:{},programStart:''});
+ const key=STORAGE_KEY;
+ const blank=()=>({version:1,athlete:'fernando-troncoso',sessions:{},programStart:'',split:ACTIVE_SPLIT});
  let initial=blank(),readError=false;
  try {const raw=localStorage.getItem(key);if(raw){initial=JSON.parse(raw);if(initial?.athlete!=='fernando-troncoso'||initial.version!==1||!initial.sessions||Array.isArray(initial.sessions))throw Error('Formato inválido');}} catch {initial=blank();readError=true;}
+ initial.split=ACTIVE_SPLIT;
  const now=new Date(),localToday=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
  initial.programStart ||= Object.values(initial.sessions).filter(Plan.hasRecord).map(s=>s.date).sort()[0]||localToday;
  if(initial.routineRevision!==2){

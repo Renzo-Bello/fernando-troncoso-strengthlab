@@ -1,11 +1,15 @@
 # Fernando Troncoso · StrengthLab
 
-Rutina inicial de cuatro días: Push, Pull, Pierna y Brazos. Programa de 8 semanas con registro local, progreso y reportes.
-
 https://renzo-bello.github.io/fernando-troncoso-strengthlab/
 
-Distribución sugerida: lunes, martes, jueves y sábado. Todas las series de trabajo se pautan a RIR 2; progresión doble según el rango indicado. Cargas no prefijadas. Bicicleta opcional.
+Dos splits seleccionables:
+- 4 días: Push / Pull / Pierna / Brazos.
+- 5 días: Push A / Pull A / Pierna / Push B / Pull B.
 
-Pauta base elaborada sin antecedentes de experiencia, lesiones o disponibilidad detallada del cliente; Renzo debe ajustar si corresponde.
+Programa de 3 meses de 4 semanas (12 semanas). El selector de mes y semana en Registro permite abrir la pauta de cada sesión; los reportes cubren los 3 meses. Los meses son bloques de 28 días desde la fecha de inicio.
 
-Los registros empiezan vacíos y se guardan únicamente en el navegador. Descargar copias desde Progreso para conservarlos o cambiar de dispositivo. El reporte se comparte manualmente.
+Cada split guarda su historial, pauta y fecha de inicio en una clave local independiente. El split de 4 días conserva la clave original para mantener los registros previos. Las copias se importan en su split correspondiente. Los enlaces de pauta incorporan el split.
+
+RIR inicial 2 y progresión doble por repeticiones. La pauta se repite durante las 12 semanas y puede ajustarse desde Editar pauta. No se generan sesiones ficticias.
+
+Los datos se guardan únicamente en este navegador. Descargar una copia de cada split para cambiar de dispositivo. El reporte se comparte manualmente.
