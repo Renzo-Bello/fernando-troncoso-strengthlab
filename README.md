@@ -1,11 +1,11 @@
-# StrengthLab Demo
+# Fernando Troncoso · StrengthLab
 
-Demo independiente para llamadas de venta.
+Rutina inicial de cuatro días: Push, Pull, Pierna y Brazos. Programa de 8 semanas con registro local, progreso y reportes.
 
-https://renzo-bello.github.io/strengthlab-demo/
+https://renzo-bello.github.io/fernando-troncoso-strengthlab/
 
-Personaliza el nombre del prospecto, muestra la rutina, registra una serie, revisa Progreso y genera un reporte semanal. Usa Reiniciar demo antes de la siguiente llamada.
+Distribución sugerida: lunes, martes, jueves y sábado. Todas las series de trabajo se pautan a RIR 2; progresión doble según el rango indicado. Cargas no prefijadas. Bicicleta opcional.
 
-Los datos son ficticios y se guardan en el navegador. No existe envío automático de registros al entrenador. La demo conserva el ejemplo de 3 días y 8 semanas; la pauta real se personaliza por cliente.
+Pauta base elaborada sin antecedentes de experiencia, lesiones o disponibilidad detallada del cliente; Renzo debe ajustar si corresponde.
 
-Publicación: GitHub Pages desde main, carpeta raíz. La copia original de Itallo se conserva sin cambios.
+Los registros empiezan vacíos y se guardan únicamente en el navegador. Descargar copias desde Progreso para conservarlos o cambiar de dispositivo. El reporte se comparte manualmente.

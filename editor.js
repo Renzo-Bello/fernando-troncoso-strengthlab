@@ -4,19 +4,19 @@ function renderEditor(){
  $('plan-fields').querySelectorAll('[data-plan-sets]').forEach(input=>input.oninput=()=>{if(!input.validity.valid)return;const field=input.closest('fieldset'),box=field.querySelector('.plan-rirs'),values=[...box.querySelectorAll('select')].map(x=>x.value);box.innerHTML=Array.from({length:Number(input.value)},(_,i)=>`<label>Serie ${i+1}<select data-plan-rir="${i}" aria-label="RIR pautado, serie ${i+1}">${rirOptions(values[i]||'')}</select></label>`).join('');});
  $('plan-link-box').hidden=true;$('plan-status').textContent='';
 }
-function formPlan(){return Plan.validate({version:1,revision:2,athlete:'usuario-demo',exercises:[...$('plan-fields').querySelectorAll('[data-plan-ex]')].map(el=>({id:el.dataset.planEx,sets:Number(el.querySelector('[data-plan-sets]').value),reps:el.querySelector('[data-plan-reps]').value.trim(),rir:Array.from({length:Number(el.querySelector('[data-plan-sets]').value)},(_,i)=>el.querySelectorAll('[data-plan-rir]')[i]?.value||''),video:el.querySelector('[data-plan-video]').value.trim()}))});}
+function formPlan(){return Plan.validate({version:1,revision:2,athlete:'fernando-troncoso',exercises:[...$('plan-fields').querySelectorAll('[data-plan-ex]')].map(el=>({id:el.dataset.planEx,sets:Number(el.querySelector('[data-plan-sets]').value),reps:el.querySelector('[data-plan-reps]').value.trim(),rir:Array.from({length:Number(el.querySelector('[data-plan-sets]').value)},(_,i)=>el.querySelectorAll('[data-plan-rir]')[i]?.value||''),video:el.querySelector('[data-plan-video]').value.trim()}))});}
 function savePlan(plan){
  const next=structuredClone(state);next.coachPlan=Plan.validate(plan);
  if(!window.Cloud.save(next))throw Error('No se pudo guardar la pauta en este navegador.');
  state=next;Plan.apply(next.coachPlan);Plan.refreshEmptySessions(state);persist();render();
- $('plan-status').textContent='Pauta guardada. Comparte el enlace para que usuario reciba estos ajustes.';
+ $('plan-status').textContent='Pauta guardada. Comparte el enlace para que Fernando Troncoso reciba estos ajustes.';
 }
 function openEditor(){renderEditor();showTab('coach');}
  $('edit-plan').onclick=openEditor;$('close-editor').onclick=()=>showTab('registro');
  $('plan-form').onsubmit=e=>{e.preventDefault();try{savePlan(formPlan());$('plan-link-box').hidden=true;}catch(error){$('plan-status').textContent=error.message;}};
- $('share-plan').onclick=()=>{try{if(!$('plan-form').reportValidity())return;const plan=formPlan();savePlan(plan);const url=new URL(location.href);url.hash='plan='+Plan.encode(plan);$('plan-link').value=url.href;$('plan-link-box').hidden=false;$('plan-status').textContent='Enlace listo. Envíalo a usuario para aplicar la pauta en su dispositivo.';}catch(error){$('plan-status').textContent=error.message;}};
+ $('share-plan').onclick=()=>{try{if(!$('plan-form').reportValidity())return;const plan=formPlan();savePlan(plan);const url=new URL(location.href);url.hash='plan='+Plan.encode(plan);$('plan-link').value=url.href;$('plan-link-box').hidden=false;$('plan-status').textContent='Enlace listo. Envíalo a Fernando Troncoso para aplicar la pauta en su dispositivo.';}catch(error){$('plan-status').textContent=error.message;}};
  $('copy-plan-link').onclick=async()=>{try{await navigator.clipboard.writeText($('plan-link').value);$('plan-status').textContent='Enlace copiado.';}catch{$('plan-link').focus();$('plan-link').select();$('plan-status').textContent='Selecciona y copia el enlace para compartirlo.';}};
- $('export-plan').onclick=()=>{try{if(!$('plan-form').reportValidity())return;download('usuario-demo-pauta.json',JSON.stringify(formPlan(),null,2),'application/json');}catch(error){$('plan-status').textContent=error.message;}};
+ $('export-plan').onclick=()=>{try{if(!$('plan-form').reportValidity())return;download('fernando-troncoso-pauta.json',JSON.stringify(formPlan(),null,2),'application/json');}catch(error){$('plan-status').textContent=error.message;}};
  $('import-plan').onchange=async e=>{try{const file=e.target.files[0];if(!file)return;if(file.size>100000)throw Error('Archivo demasiado grande.');const plan=Plan.upgrade(JSON.parse(await file.text()));if(!confirm('¿Aplicar esta pauta de RIR y videos? Las sesiones registradas no se modifican.'))return;savePlan(plan);renderEditor();$('plan-status').textContent='Pauta importada y guardada.';}catch(error){$('plan-status').textContent=error.message;}finally{e.target.value='';}};
  if(window.planLoadMessage)toast(window.planLoadMessage);
 

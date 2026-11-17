@@ -30,3 +30,8 @@ function muscleCard(id){
 MUSCLES.militar=MUSCLES["militar-mancuernas"];
 MUSCLES.predicador=MUSCLES["predicador-unilateral"];
 
+
+MUSCLES['curl-polea']=[['biceps'],'Bíceps braquial'];
+MUSCLES.rumano=[['hamstrings','glutes'],'Isquiotibiales · glúteos'];
+MUSCLES.gemelos=[[],'Gastrocnemio · sóleo'];
+MUSCLES['triceps-frances']=[['triceps'],'Tríceps'];
